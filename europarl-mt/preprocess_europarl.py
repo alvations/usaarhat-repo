@@ -50,31 +50,6 @@ def tokenize_europarl_cmd(src_lang, trg_lang, infile_path='corpus.org',
     script_lines = ["\n"] +  ["# Tokenizing Europarl "+src_lang+'-'+trg_lang]
     script_lines += [src_cmd]+ [trg_cmd] + ['wait']
     return script_lines 
-    
-############################################################################
-# Cleaning command
-############################################################################
-
-def clean_europarl_cmd(src_lang, trg_lang, infile_path='corpus.tok', 
-                       minlen=1, maxlen=40, prefix =None, shutup=False, 
-                       truecase=True):
-    if not prefix:
-        if truecase:
-            prefix = get_prefix(src_lang, trg_lang)+'.tok'+'.truecase'
-        else:
-            prefix = get_prefix(src_lang, trg_lang)+'.tok'
-            
-    change_directory = "cd {}".format("${EXPERIMENT}/"+infile_path)
-    perl = "perl {m}/training/clean-corpus-n.perl {p} {sl} {tl} train-clean {min} {max}".format(
-           m="${MOSES_SCRIPT}", p=prefix, sl=src_lang, tl=trg_lang, 
-           min=minlen, max=maxlen)
-    
-    if shutup:
-        perl = perl + ">/dev/null 2>&1"
-    cmd = [change_directory] + [perl]
-    script_lines = ["\n"] +  ["# Cleaning Europarl "+src_lang+'-'+trg_lang]
-    script_lines += cmd
-    return script_lines
 
 ############################################################################
 # Train Truecaser command
@@ -114,7 +89,7 @@ def train_truecase_europarl_cmd(src_lang, trg_lang, infile_path='corpus.tok',
 def truecase_europarl_cmd_single(lang, infile_path, prefix, shutup=False):
     perl = "${MOSES_SCRIPT}/recaser/truecase.perl"
     model = "--model {}/truecase-model.{}".format(infile_path, lang)
-    inoutfile = "< {p}.tok.{l} > {p}.tok.truecase.{l}".format(l=lang, p=prefix)
+    inoutfile = "< {p}.{l} > {p}.truecase.{l}".format(l=lang, p=prefix)
     cmd = "{} {} {}".format(perl, model, inoutfile)
     if shutup:
         cmd = cmd + ">/dev/null 2>&1"
@@ -132,14 +107,30 @@ def truecase_europarl_cmd(src_lang, trg_lang, infile_path='corpus.tok',
                                      prefix, shutup)
     script_lines = ["\n"] +  ["# Truecasing Europarl "+src_lang+'-'+trg_lang]
     script_lines += [src_cmd] + [trg_cmd] + ['wait']
-    return script_lines   
-     
-    
+    return script_lines
 
-'''
-def train_truecase_europarl_cmd(src_lang, trg_lang, prefix='train.tok'):
-   #${MOSES_SCRIPT}/recaser/train-truecaser.perl --model truecase-model.en --corpus train_dev.tok.en 
-   train_truecase_europarl_cmd_single(src_lang, prefix=)
     
-${MOSES_SCRIPT}/recaser/truecase.perl --model truecase-model.en < ${file}.tok.en > ${file}.en
-'''
+############################################################################
+# Cleaning command
+############################################################################
+
+def clean_europarl_cmd(src_lang, trg_lang, infile_path='corpus.tok', 
+                       minlen=1, maxlen=40, prefix =None, shutup=False, 
+                       truecase=True):
+    if not prefix:
+        if truecase:
+            prefix = get_prefix(src_lang, trg_lang)+'.tok'+'.truecase'
+        else:
+            prefix = get_prefix(src_lang, trg_lang)+'.tok'
+            
+    change_directory = "cd {}".format("${EXPERIMENT}/"+infile_path)
+    perl = "perl {m}/training/clean-corpus-n.perl {p} {sl} {tl} train-clean {min} {max}".format(
+           m="${MOSES_SCRIPT}", p=prefix, sl=src_lang, tl=trg_lang, 
+           min=minlen, max=maxlen)
+    
+    if shutup:
+        perl = perl + ">/dev/null 2>&1"
+    cmd = [change_directory] + [perl]
+    script_lines = ["\n"] +  ["# Cleaning Europarl "+src_lang+'-'+trg_lang]
+    script_lines += cmd
+    return script_lines

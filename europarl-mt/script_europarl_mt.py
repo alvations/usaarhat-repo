@@ -15,6 +15,12 @@ shutup=False
 expname = "europarl_pbsmt_en_de"
 script = create_experiment(expname, moses_script_path)
 
+src_lang = 'en'
+trg_lang = 'de'
+
+original_corpus_path = 'corpus.org'
+tokenize_corpus_path = 'corpus.tok'
+
 # Download Europarl
 dl_europarl = download_europarl_cmd('en', 'de', 'corpus.org', 
                                     shutup=shutup) 
@@ -36,7 +42,8 @@ cl_europarl = clean_europarl_cmd('en', 'de', 'corpus.tok', 1, 40,
                                  shutup=shutup, truecase=True)
 
 
-script += dl_europarl + tk_europarl + trtc_europarl + tc_europarl +  cl_europarl
+script += dl_europarl + tk_europarl 
+script += trtc_europarl + tc_europarl +  cl_europarl
 
 for i in script:
     print i

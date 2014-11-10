@@ -9,10 +9,13 @@ langs2links = literal_eval(io.open('europarl-links.txt', 'r').read())
 
 moses_script_path = "/home/alvas/mosesdecoder/scripts" 
 
-def get_prefix(src_lang, trg_lang):
+def get_prefix(src_lang, trg_lang, holdout=None):
     link = langs2links[src_lang, trg_lang]
     file_prefix = link.rpartition('/')[2].rpartition('.')[0].partition('.')[0]
-    return 'Europarl.'+file_prefix
+    if holdout:
+        return 'Europarl.'+file_prefix+'.all-'+str(holdout)
+    else:
+        return 'Europarl.'+file_prefix
 
 
 ############################################################################
@@ -37,9 +40,10 @@ def tokenize_europarl_cmd_single(lang, prefix, infile_path='corpus.org',
     return cmd +" &"
 
 def tokenize_europarl_cmd(src_lang, trg_lang, infile_path='corpus.org', 
-                          outfile_path='corpus.tok',shutup=False):
+                          outfile_path='corpus.tok',shutup=False,
+                          holdout=None):
     # Get Europarl prefix
-    prefix = get_prefix(src_lang, trg_lang)
+    prefix = get_prefix(src_lang, trg_lang, holdout)
     src_cmd = tokenize_europarl_cmd_single(src_lang, prefix, infile_path, 
                                            outfile_path, "${MOSES_SCRIPT}", 
                                            "${EXPERIMENT}", shutup)
@@ -66,9 +70,9 @@ def train_truecase_europarl_cmd_single(lang, infile_path, prefix, shutup=False):
     return train_cmd +" &"
 
 def train_truecase_europarl_cmd(src_lang, trg_lang, infile_path='corpus.tok',
-                                prefix=None, shutup=False):
+                                prefix=None, shutup=False, holdout=None):
     if not prefix:
-        prefix = get_prefix(src_lang, trg_lang)+'.tok'        
+        prefix = prefix = get_prefix(src_lang, trg_lang, holdout)+'.tok'        
     src_cmd = train_truecase_europarl_cmd_single(src_lang, 
                                                  "${EXPERIMENT}/"+infile_path, 
                                                  prefix, shutup)
@@ -98,9 +102,9 @@ def truecase_europarl_cmd_single(lang, infile_path, prefix, shutup=False):
     
 
 def truecase_europarl_cmd(src_lang, trg_lang, infile_path='corpus.tok',
-                                prefix=None, shutup=False ):
+                                prefix=None, shutup=False, holdout=None):
     if not prefix:
-        prefix = get_prefix(src_lang, trg_lang)+'.tok'   
+        prefix = prefix = get_prefix(src_lang, trg_lang, holdout)+'.tok'   
     src_cmd = truecase_europarl_cmd_single(src_lang, "${EXPERIMENT}/"+infile_path, 
                                      prefix, shutup)
     trg_cmd = truecase_europarl_cmd_single(trg_lang, "${EXPERIMENT}/"+infile_path,
@@ -116,12 +120,12 @@ def truecase_europarl_cmd(src_lang, trg_lang, infile_path='corpus.tok',
 
 def clean_europarl_cmd(src_lang, trg_lang, infile_path='corpus.tok', 
                        minlen=1, maxlen=40, prefix =None, shutup=False, 
-                       truecase=True):
+                       truecase=True, holdout=None):
     if not prefix:
         if truecase:
-            prefix = get_prefix(src_lang, trg_lang)+'.tok'+'.truecase'
+            prefix = prefix = get_prefix(src_lang, trg_lang, holdout)+'.tok'+'.truecase'
         else:
-            prefix = get_prefix(src_lang, trg_lang)+'.tok'
+            prefix = prefix = get_prefix(src_lang, trg_lang, holdout)+'.tok'
             
     change_directory = "cd {}".format("${EXPERIMENT}/"+infile_path)
     perl = "perl {m}/training/clean-corpus-n.perl {p} {sl} {tl} train-clean {min} {max}".format(

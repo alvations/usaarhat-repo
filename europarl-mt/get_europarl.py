@@ -10,7 +10,7 @@ def download_europarl_cmd(src_lang, trg_lang,
                           shutup=False):
     link = langs2links[src_lang, trg_lang]
     file_prefix = link.rpartition('/')[2].rpartition('.')[0]
-    corpus_dir = os.getcwd()+"/"+corpus_dir
+    corpus_dir = "${EXPERIMENT}"+"/"+corpus_dir
     
     make_directory = 'mkdir {}'.format(corpus_dir)
     change_directory = 'cd {}'.format(corpus_dir)

@@ -24,14 +24,15 @@ def get_prefix(src_lang, trg_lang):
 
 def tokenize_europarl_cmd_single(lang, prefix, infile_path='corpus.org', 
                                  outfile_path='corpus.tok',
-                                 moses_script_path=moses_script_path, 
+                                 moses_script_path=moses_script_path,
+                                 experiment_path=os.getcwd(),
                                  shutup=False):
     
     # Initialize  cat with filename
-    cat = "cat {d}/{i}/{p}.{l} |".format(d=os.getcwd(), i=infile_path, 
+    cat = "cat {d}/{i}/{p}.{l} |".format(d=experiment_path, i=infile_path, 
                                          p=prefix, l=lang)
     perl = "perl {m}/tokenizer/tokenizer.perl -l {l}".format(m=moses_script_path, l=lang)
-    outfile = " > {d}/{o}/train.tok.{l}".format(d=os.getcwd(), 
+    outfile = " > {d}/{o}/train.tok.{l}".format(d=experiment_path, 
                                                 o=outfile_path, l=lang)
     cmd = "sh -c '{} {} {}'".format(cat, perl, outfile)
     if shutup:
@@ -39,20 +40,37 @@ def tokenize_europarl_cmd_single(lang, prefix, infile_path='corpus.org',
     return [cmd]
 
 def tokenize_europarl_cmd(src_lang, trg_lang, infile_path='corpus.org', 
-                          outfile_path='corpus.tok',
-                          moses_script_path=moses_script_path, shutup=False):
+                          outfile_path='corpus.tok', shutup=False):
     # Get Europarl prefix
     prefix = get_prefix(src_lang, trg_lang)
     src_cmd = tokenize_europarl_cmd_single(src_lang, prefix, infile_path, 
-                                           outfile_path, moses_script_path, 
-                                           shutup)
+                                           outfile_path, "${MOSES_SCRIPT}", 
+                                           "${EXPERIMENT}", shutup)
     trg_cmd = tokenize_europarl_cmd_single(trg_lang, prefix, infile_path, 
-                                           outfile_path, moses_script_path, 
-                                           shutup)
+                                           outfile_path, "${MOSES_SCRIPT}", 
+                                           "${EXPERIMENT}", shutup)
     
     script_lines = ["\n"] +  ["# Tokenizing Europarl "+src_lang+'-'+trg_lang]
-    script_lines += src_cmd + trg_cmd
+    script_lines += src_cmd + trg_cmd + ['wait']
     return script_lines 
+    
+
+def clean_europarl_cmd(src_lang, trg_lang, infile_path='corpus.tok', 
+                       minlen=1, maxlen=40,
+                      moses_script_path=moses_script_path, 
+                      shutup=False):
+    # Get Europarl prefix
+    prefix = get_prefix(src_lang, trg_lang)
+    
+    change_directory = "cd {}".format("${EXPERIMENT}/"+infile_path)
+    perl = "perl {m}/training/clean-corpus-n.perl {p} {sl} {tl} train-clean {min} {max}".format(
+           m="${MOSES_SCRIPT}", p=prefix,sl=src_lang, tl=trg_lang, 
+           min=minlen, max=maxlen)
+    
+    cmd = [change_directory] + [perl]
+    script_lines = ["\n"] +  ["# Cleaning Europarl "+src_lang+'-'+trg_lang]
+    script_lines += cmd 
+    return script_lines
     
 
 def tokenizer_command(lang, prefix, shutup=True):
@@ -88,9 +106,7 @@ def tokenize_europarl(src_lang, trg_lang, shutup=True):
            ).start() 
     q1.get(); q2.get()
     
-def train_truecase_model(src_lang, trg_lang):
-    pass
-    
+
 def main(src_lang, trg_lang):
     tokenize_europarl(src_lang, trg_lang, shutup=True)
     

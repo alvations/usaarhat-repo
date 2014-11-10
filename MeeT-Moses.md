@@ -12,6 +12,21 @@ cat test.in | perl ${MOSES_SCRIPT}/tokenizer/tokenizer.perl -l de > test.out
 cat test.out
 ```
 
+**How to TrueCase text with Moses toolkit**
+
+```
+echo "Barack Obama is the president of the United States of America .
+Obama lives in the White House ,
+The United States of America is also call USA .
+USA is an acronym .
+Also , the united states would like to be capitalized ." > test.tok.en
+
+perl ${MOSES_SCRIPT}/recaser/train-truecaser.perl --model truecase-model.en --corpus test.tok.en
+perl ${MOSES_SCRIPT}/recaser/truecase.perl --model truecase-model.en < test.tok.en > test.tok.truecase.en
+
+cat test.tok.truecase.en
+```
+
 **How to clean corpus by length with Moses toolkit?**
 
 ```

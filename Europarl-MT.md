@@ -26,7 +26,7 @@ You will see the following output:
 
 
 MOSES_SCRIPT=/home/alvas/mosesdecoder/scripts
-EXPERIMENT=/home/usaarhat/usaarhat-repo/europarl-mt/europarl_pbsmt_en_de
+EXPERIMENT=/home/alvas/git/usaarhat-repo/europarl-mt/europarl_pbsmt_en_de
 
 
 mkdir europarl_pbsmt_en_de
@@ -49,8 +49,15 @@ cat ${EXPERIMENT}/corpus.org/Europarl.de-en.de | perl ${MOSES_SCRIPT}/tokenizer/
 
 
 # Training Truecaser Europarl en-de
-perl ${MOSES_SCRIPT}/recaser/train-truecaser.perl --model ${EXPERIMENT}/corpus.tok/truecase-model.en --corpus ${EXPERIMENT}/corpus.tok/Europarl.de-en.tok.en
-perl ${MOSES_SCRIPT}/recaser/train-truecaser.perl --model ${EXPERIMENT}/corpus.tok/truecase-model.de --corpus ${EXPERIMENT}/corpus.tok/Europarl.de-en.tok.de
+perl ${MOSES_SCRIPT}/recaser/train-truecaser.perl --model ${EXPERIMENT}/corpus.tok/truecase-model.en --corpus ${EXPERIMENT}/corpus.tok/Europarl.de-en.tok.en &
+perl ${MOSES_SCRIPT}/recaser/train-truecaser.perl --model ${EXPERIMENT}/corpus.tok/truecase-model.de --corpus ${EXPERIMENT}/corpus.tok/Europarl.de-en.tok.de &
+wait
+
+
+# Truecasing Europarl en-de
+${MOSES_SCRIPT}/recaser/truecase.perl --model ${EXPERIMENT}/corpus.tok/truecase-model.en < Europarl.de-en.tok.en > Europarl.de-en.tok.truecase.en &
+${MOSES_SCRIPT}/recaser/truecase.perl --model ${EXPERIMENT}/corpus.tok/truecase-model.de < Europarl.de-en.tok.de > Europarl.de-en.tok.truecase.de &
+wait
 
 
 # Copying Europarl en-de for language model
@@ -62,7 +69,6 @@ cp ${EXPERIMENT}/corpus.tok/Europarl.de-en.tok.truecase.de > ${EXPERIMENT}/corpu
 cd ${EXPERIMENT}/corpus.tok
 perl ${MOSES_SCRIPT}/training/clean-corpus-n.perl Europarl.de-en.tok.truecase en de train-clean 1 80
 cd ../..
-
 
 ```
 

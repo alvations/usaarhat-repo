@@ -65,7 +65,7 @@ def train_truecase_europarl_cmd_single(lang, infile_path, prefix, shutup=False):
     if shutup:
         train_cmd = train_cmd + ">/dev/null 2>&1"
     
-    return train_cmd
+    return train_cmd +" &"
 
 def train_truecase_europarl_cmd(src_lang, trg_lang, infile_path='corpus.tok',
                                 prefix=None, shutup=False, holdout=None):
@@ -80,7 +80,7 @@ def train_truecase_europarl_cmd(src_lang, trg_lang, infile_path='corpus.tok',
     
         
     script_lines = ["\n"] +  ["# Training Truecaser Europarl "+src_lang+'-'+trg_lang]
-    script_lines += [src_cmd] + [trg_cmd]
+    script_lines += [src_cmd] + [trg_cmd] + ['wait']
     return script_lines
 
 ############################################################################

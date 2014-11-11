@@ -1,3 +1,6 @@
+Once Moses is **sucessfully** installed, try out the following exercises to see the preprocessing steps before you can train a machine translation model from Moses. 
+
+Type the follow commands LINE BY LINE
 
 **How to tokenize text with Moses toolkit?**
 

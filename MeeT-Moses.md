@@ -49,6 +49,8 @@ perl ${MOSES_SCRIPT}/recaser/truecase.perl --model truecase-model.en < test.tok.
 cat test.tok.truecase.en
 ```
 
+ - Notice the difference in the orginal text and the `test.tok.truecase.en` file. 
+
 **How to clean corpus by length with Moses toolkit?**
 
 ```
@@ -75,3 +77,5 @@ perl ${MOSES_SCRIPT}/training/clean-corpus-n.perl test-tok en de test-clean 1 6
 cat test-clean.en
 cat test-clean.de
 ```
+
+ - Why has the number of lines in `test-clean.en` decrease? What was the `clean-corpus-n.perl` doing?

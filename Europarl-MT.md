@@ -61,14 +61,15 @@ wait
 
 
 # Copying Europarl en-de for language model
-cp ${EXPERIMENT}/corpus.tok/Europarl.de-en.tok.truecase.en > ${EXPERIMENT}/corpus.tok/train-all.en
-cp ${EXPERIMENT}/corpus.tok/Europarl.de-en.tok.truecase.de > ${EXPERIMENT}/corpus.tok/train-all.de
+cp ${EXPERIMENT}/corpus.tok/Europarl.de-en.tok.truecase.en ${EXPERIMENT}/corpus.tok/train-all.en
+cp ${EXPERIMENT}/corpus.tok/Europarl.de-en.tok.truecase.de ${EXPERIMENT}/corpus.tok/train-all.de
 
 
 # Cleaning Europarl en-de
 cd ${EXPERIMENT}/corpus.tok
 perl ${MOSES_SCRIPT}/training/clean-corpus-n.perl Europarl.de-en.tok.truecase en de train-clean 1 80
 cd ../..
+
 
 ```
 

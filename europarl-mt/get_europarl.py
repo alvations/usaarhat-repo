@@ -25,7 +25,7 @@ def download_europarl_cmd(src_lang, trg_lang,
     bash_cmds = [make_directory, change_directory, wget, unzip]
 
     script_lines = ["\n"] +  ["# Downloadings Europarl "+src_lang+'-'+trg_lang]
-    script_lines += bash_cmds
+    script_lines += bash_cmds + ['wait']
     if holdout:
         script_lines+= ["\n"] +  ["# Splitting Europarl "+src_lang+'-'+trg_lang]
         src_head = "head -n -{h} Europarl.{fp}.{l} > Europarl.{fp}.all-{h}.{l}".format(h=holdout, fp=file_prefix, l=src_lang)

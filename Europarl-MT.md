@@ -125,7 +125,7 @@ Go into the new directory and see that the `corpus.org` and `corpus.tok` directo
 cd europarl_experiment_fr_de
 cd corpus.tok
 ls
-cat Eurparl.de-fr.de | less
+cat Eurparl.de-fr.tok.truecase.de | less
 ```
 
 To exit the `cat` command, use `ctr + c` or `q` and then enter

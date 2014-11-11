@@ -129,3 +129,7 @@ cat Eurparl.de-fr.de | less
 ```
 
 To exit the `cat` command, use `ctr + c` or `q` and then enter
+
+----
+
+That's all for Session 1 of USaar Hack and Tell, see you in the next session https://sites.google.com/site/usaarhat/about-us !!!

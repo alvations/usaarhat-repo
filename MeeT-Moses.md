@@ -17,7 +17,7 @@ The output of the last command will show where you save your file, e.g. `/home/e
 
 **How to tokenize text with Moses toolkit?**
 
-**Replace the first line of the following commands with the correct path to you mosesdecoder and add the subdirectory `/scripts` path to it, then do**:
+IMPORTANT: Replace the first line of the following commands with the correct path to you mosesdecoder and add the subdirectory `/scripts` path to it, then do:
 
 ```
 MOSES_SCRIPT=/home/expert/mosesdecoder/scripts
@@ -32,7 +32,7 @@ cat test.out
 ```
 
  - Note that the punctuations are spaced out and Moses tokenizer doesn't do sentence tokenization. Each line of the input file is independent of the next line. 
- - Also note the language option that you can use. 
+ - Also note the language option that you can use `<some_path>/tokenizer.perl -l de`. 
 
 **How to TrueCase text with Moses toolkit**
 

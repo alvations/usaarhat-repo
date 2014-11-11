@@ -29,11 +29,15 @@ usage: git [--version] [--help] [-C <path>] [-c name=value]
 ```
 If you don't see the above type:
 
-```sudo apt-get install git```
+```
+sudo apt-get install git
+```
 
 After installing git on your computer, do:
 
-```git clone https://github.com/alvations/usaarhat-repo.git```
+```
+git clone https://github.com/alvations/usaarhat-repo.git
+```
 
 Then do:
 

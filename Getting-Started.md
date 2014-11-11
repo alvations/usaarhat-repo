@@ -1,7 +1,17 @@
 Note: The following instructions work on Ubuntu 14.04 !!!! Type the commands LINE BY LINE
 
 **Gitting the repository from github**
-See whether you have git on your machine, type the following on your machine:
+
+Go to your home directory, typing `cd` will automatically move you to the home directory:
+
+```
+cd
+cd ~
+```
+
+Note that the `cd ~` brings you to the same home directory. The `~` is a shortcut for your home directory. It doesn't work in all circumstances so I normally avoid it when scripting.
+
+Now see whether you have git on your machine, type the following on your machine:
 
 ```
 cd
@@ -34,3 +44,29 @@ ls
 You will now see `usaarhat-repo` in the list of files/directories you have.
 
 ----
+
+**Installing Moses on your machine**
+
+The `momo.sh` file automatically installs Moses toolkit on an Ubuntu 14.04 machine. 
+
+Type the following command to copy the `momo.sh` file to your home directory. But first go into the `usaarhat-repo` directory:
+
+```
+cd
+cd usaarhat-repo
+cp momo.sh ..
+cd
+ls
+```
+
+`cp momo.sh ..`  copies the `momo.sh` file to the parent directory in this case the parent directory is the home directory. Now you will see `momo.sh` in your home directory, i.e. `~`.
+
+To install moses, simply type the following:
+
+```
+cd
+momo.sh
+```
+
+----
+

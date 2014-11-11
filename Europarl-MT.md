@@ -55,13 +55,14 @@ wait
 
 
 # Copying Europarl en-de for language model
-cp Europarl.de-en.tok.truecase.en > train-all.en
-cp Europarl.de-en.tok.truecase.de > train-all.de
+cp ${EXPERIMENT}/corpus.tok/Europarl.de-en.tok.truecase.en > ${EXPERIMENT}/corpus.tok/train-all.en
+cp ${EXPERIMENT}/corpus.tok/Europarl.de-en.tok.truecase.de > ${EXPERIMENT}/corpus.tok/train-all.de
 
 
 # Cleaning Europarl en-de
 cd ${EXPERIMENT}/corpus.tok
 perl ${MOSES_SCRIPT}/training/clean-corpus-n.perl Europarl.de-en.tok.truecase en de train-clean 1 80
+cd ..
 
 ```
 
@@ -77,7 +78,7 @@ gedit prepare_corpus.sh
 
 Now, view the `script_europarl_mt.py` in your favorite text editor, e.g. `gedit script_europarl_mt.py`.
 
-You will see that there are multiple steps that you took similar to the `MeeT-Moses.md` exercise. In addition, there is an extract step that will download the Europarl automatically.
+You will see that there are multiple steps that you took similar to the `MeeT-Moses.md` exercise. In addition, there is an extra step that will download the Europarl automatically.
 
 Take note of these parameters in the file:
 

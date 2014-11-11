@@ -77,7 +77,7 @@ gedit prepare_corpus.sh
 
 Now, view the `script_europarl_mt.py` in your favorite text editor, e.g. `gedit script_europarl_mt.py`.
 
-You will see that there are multiple steps that you took similar to the `MeeT-Moses.md` exercise. In addition, there is an extract step that will download the Europarl automatically.
+You will see that there are multiple steps that you took similar to the `MeeT-Moses.md` exercise. In addition, there is an extra step that will download the Europarl automatically.
 
 Take note of these parameters in the file:
 

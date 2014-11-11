@@ -92,7 +92,7 @@ Change the values of the above parameters in the `script_europarl_mt.py` with th
 ```
 expname = "europarl_experiment_fr_de"
 src_lang = "fr"
-trg_lang = "en"
+trg_lang = "de"
 ```
 
 Then run the python script again:

@@ -68,5 +68,14 @@ cd
 momo.sh
 ```
 
+Wait for the installation to end and you should see the following as the last two lines:
+
+```
+this is a small house
+this is a small house
+```
+
+If you did not see the above lines at the end of installation. You are one of the luck
+
 ----
 

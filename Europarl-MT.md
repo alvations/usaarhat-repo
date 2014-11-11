@@ -55,8 +55,8 @@ wait
 
 
 # Truecasing Europarl en-de
-${MOSES_SCRIPT}/recaser/truecase.perl --model ${EXPERIMENT}/corpus.tok/truecase-model.en < Europarl.de-en.tok.en > Europarl.de-en.tok.truecase.en &
-${MOSES_SCRIPT}/recaser/truecase.perl --model ${EXPERIMENT}/corpus.tok/truecase-model.de < Europarl.de-en.tok.de > Europarl.de-en.tok.truecase.de &
+${MOSES_SCRIPT}/recaser/truecase.perl --model ${EXPERIMENT}/corpus.tok/truecase-model.en < ${EXPERIMENT}/corpus.tok/Europarl.de-en.tok.en > ${EXPERIMENT}/corpus.tok/Europarl.de-en.tok.truecase.en &
+${MOSES_SCRIPT}/recaser/truecase.perl --model ${EXPERIMENT}/corpus.tok/truecase-model.de < ${EXPERIMENT}/corpus.tok/Europarl.de-en.tok.de > ${EXPERIMENT}/corpus.tok/Europarl.de-en.tok.truecase.de &
 wait
 
 

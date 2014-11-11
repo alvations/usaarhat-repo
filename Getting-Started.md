@@ -75,7 +75,7 @@ this is a small house
 this is a small house
 ```
 
-If you did not see the above lines at the end of installation. You are one of the luck
+If you did not see the above lines at the end of installation. Go to http://www.statmt.org/moses/?n=Development.GetStarted and see whehter there is a solution to your problem, if not consult the Moses developers from the mailing list (http://www.statmt.org/moses/?n=Moses.MailingLists)
 
 ----
 

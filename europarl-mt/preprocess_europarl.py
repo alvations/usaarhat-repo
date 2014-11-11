@@ -35,7 +35,7 @@ def tokenize_europarl_cmd_single(lang, prefix, infile_path='corpus.org',
     cmd = "{} {} {}".format(cat, perl, outfile)
     if shutup:
         cmd = cmd + ">/dev/null 2>&1"
-    return cmd
+    return cmd +" &"
 
 def tokenize_europarl_cmd(src_lang, trg_lang, infile_path='corpus.org', 
                           outfile_path='corpus.tok',shutup=False,
@@ -138,5 +138,5 @@ def clean_europarl_cmd(src_lang, trg_lang, infile_path='corpus.tok',
         perl = perl + ">/dev/null 2>&1"
     cmd = [change_directory] + [perl]
     script_lines = ["\n"] +  ["# Cleaning Europarl "+src_lang+'-'+trg_lang]
-    script_lines += cmd + ["cd .."]
+    script_lines += cmd
     return script_lines

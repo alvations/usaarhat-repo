@@ -110,7 +110,7 @@ def truecase_europarl_cmd(src_lang, trg_lang, infile_path='corpus.tok',
     script_lines = ["\n"] +  ["# Truecasing Europarl "+src_lang+'-'+trg_lang]
     script_lines += [src_cmd] + [trg_cmd] + ['wait']
     
-    script_lines = ["\n"] +  ["# Copying Europarl "+src_lang+'-'+trg_lang+' for language model']
+    script_lines+= ["\n"] +  ["# Copying Europarl "+src_lang+'-'+trg_lang+' for language model']
     script_lines+= ['cp {d}{p}.truecase.{l} > {d}train-all.{l}'.format(d="${EXPERIMENT}/corpus.tok/", l=src_lang, p=prefix)]
     script_lines+= ['cp {d}{p}.truecase.{l} > {d}train-all.{l}'.format(d="${EXPERIMENT}/corpus.tok/",l=trg_lang, p=prefix)]
     return script_lines

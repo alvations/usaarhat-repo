@@ -25,8 +25,8 @@ You will see the following output:
 #!/bin/bash
 
 
-MOSES_SCRIPT=/home/alvas/mosesdecoder
-EXPERIMENT=/home/alvas/git/usaarhat-repo/europarl-mt/europarl_pbsmt_en_de
+MOSES_SCRIPT=/home/usaarhat/mosesdecoder/scripts
+EXPERIMENT=/home/usaarhat/git/usaarhat-repo/europarl-mt/europarl_pbsmt_en_de
 
 
 mkdir europarl_pbsmt_en_de

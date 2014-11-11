@@ -91,7 +91,7 @@ def train_truecase_europarl_cmd(src_lang, trg_lang, infile_path='corpus.tok',
 def truecase_europarl_cmd_single(lang, infile_path, prefix, shutup=False):
     perl = "${MOSES_SCRIPT}/recaser/truecase.perl"
     model = "--model {}/truecase-model.{}".format(infile_path, lang)
-    inoutfile = "< {p}.{l} > {p}.truecase.{l}".format(l=lang, p=prefix)
+    inoutfile = "< {d}{p}.{l} > {d}{p}.truecase.{l}".format(d="${EXPERIMENT}/corpus.tok/",l=lang, p=prefix)
     cmd = "{} {} {}".format(perl, model, inoutfile)
     if shutup:
         cmd = cmd + ">/dev/null 2>&1"

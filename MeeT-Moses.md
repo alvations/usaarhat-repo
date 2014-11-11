@@ -1,8 +1,27 @@
 Once Moses is **sucessfully** installed, try out the following exercises to see the preprocessing steps before you can train a machine translation model from Moses. 
 
-Type the follow commands LINE BY LINE
+Type the follow commands LINE BY LINE!
+
+----
+
+**Check where is Moses installed**
+
+If you had followed the instructions from `Getting-Started.md`, you should have `mosesdecoder/` directory in your home directory. To check that, do:
+
+```
+cd
+ls
+cd mosesdecoder
+pwd
+```
+
+The output of the last command will show where you save your file, e.g. `/home/expert/mosesdecoder`
+
+----
 
 **How to tokenize text with Moses toolkit?**
+
+IMPORTANT: Replace the first line of the following commands with the correct path to you mosesdecoder and add the subdirectory `/scripts` path to it, then do:
 
 ```
 MOSES_SCRIPT=/home/expert/mosesdecoder/scripts
@@ -11,9 +30,15 @@ echo """„Frau Präsidentin! Ist meine Stimme mitgezählt worden?"""
 echo """„Frau Präsidentin! Ist meine Stimme mitgezählt worden?""" | perl ${MOSES_SCRIPT}/tokenizer/tokenizer.perl -l de
 
 echo """„Frau Präsidentin! Ist meine Stimme mitgezählt worden?""" > test.in
+cat test.in
 cat test.in | perl ${MOSES_SCRIPT}/tokenizer/tokenizer.perl -l de > test.out
 cat test.out
 ```
+
+ - Note that the punctuations are spaced out and Moses tokenizer doesn't do sentence tokenization. Each line of the input file is independent of the next line. 
+ - Also note the language option that you can use `<some_path>/tokenizer.perl -l de`. 
+
+----
 
 **How to TrueCase text with Moses toolkit**
 
@@ -29,6 +54,10 @@ perl ${MOSES_SCRIPT}/recaser/truecase.perl --model truecase-model.en < test.tok.
 
 cat test.tok.truecase.en
 ```
+
+ - Notice the difference in the orginal text and the `test.tok.truecase.en` file. 
+
+----
 
 **How to clean corpus by length with Moses toolkit?**
 
@@ -56,3 +85,5 @@ perl ${MOSES_SCRIPT}/training/clean-corpus-n.perl test-tok en de test-clean 1 6
 cat test-clean.en
 cat test-clean.de
 ```
+
+ - Why has the number of lines in `test-clean.en` decrease? What was the `clean-corpus-n.perl` doing?

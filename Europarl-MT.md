@@ -25,8 +25,8 @@ You will see the following output:
 #!/bin/bash
 
 
-MOSES_SCRIPT=/home/usaarhat/mosesdecoder/scripts
-EXPERIMENT=/home/usaarhat/git/usaarhat-repo/europarl-mt/europarl_pbsmt_en_de
+MOSES_SCRIPT=/home/alvas/mosesdecoder/scripts
+EXPERIMENT=/home/alvas/git/usaarhat-repo/europarl-mt/europarl_pbsmt_en_de
 
 
 mkdir europarl_pbsmt_en_de
@@ -38,13 +38,14 @@ mkdir ${EXPERIMENT}/corpus.org
 cd ${EXPERIMENT}/corpus.org
 wget http://opus.lingfil.uu.se/download.php?f=Europarl/de-en.txt.zip -O de-en.txt.zip
 unzip de-en.txt.zip
+wait
 cd ..
 mkdir corpus.tok
 
 
 # Tokenizing Europarl en-de
-sh -c 'cat ${EXPERIMENT}/corpus.org/Europarl.de-en.en | perl ${MOSES_SCRIPT}/tokenizer/tokenizer.perl -l en  > ${EXPERIMENT}/corpus.tok/Europarl.de-en.tok.en' &
-sh -c 'cat ${EXPERIMENT}/corpus.org/Europarl.de-en.de | perl ${MOSES_SCRIPT}/tokenizer/tokenizer.perl -l de  > ${EXPERIMENT}/corpus.tok/Europarl.de-en.tok.de' &
+cat ${EXPERIMENT}/corpus.org/Europarl.de-en.en | perl ${MOSES_SCRIPT}/tokenizer/tokenizer.perl -l en  > ${EXPERIMENT}/corpus.tok/Europarl.de-en.tok.en &
+cat ${EXPERIMENT}/corpus.org/Europarl.de-en.de | perl ${MOSES_SCRIPT}/tokenizer/tokenizer.perl -l de  > ${EXPERIMENT}/corpus.tok/Europarl.de-en.tok.de &
 wait
 
 
@@ -62,7 +63,7 @@ cp ${EXPERIMENT}/corpus.tok/Europarl.de-en.tok.truecase.de > ${EXPERIMENT}/corpu
 # Cleaning Europarl en-de
 cd ${EXPERIMENT}/corpus.tok
 perl ${MOSES_SCRIPT}/training/clean-corpus-n.perl Europarl.de-en.tok.truecase en de train-clean 1 80
-cd ..
+
 
 ```
 

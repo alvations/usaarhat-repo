@@ -32,10 +32,10 @@ def tokenize_europarl_cmd_single(lang, prefix, infile_path='corpus.org',
     outfile = " > {d}/{o}/{p}.tok.{l}".format(d=experiment_path, 
                                               o=outfile_path, p=prefix, 
                                               l=lang)
-    cmd = "sh -c '{} {} {}'".format(cat, perl, outfile)
+    cmd = "{} {} {}".format(cat, perl, outfile)
     if shutup:
         cmd = cmd + ">/dev/null 2>&1"
-    return cmd +" &"
+    return cmd
 
 def tokenize_europarl_cmd(src_lang, trg_lang, infile_path='corpus.org', 
                           outfile_path='corpus.tok',shutup=False,

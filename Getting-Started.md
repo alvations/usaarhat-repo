@@ -1,10 +1,12 @@
-Note: The following instructions work on Ubuntu 14.04 !!!!
+Note: The following instructions work on Ubuntu 14.04 !!!! Type the commands LINE BY LINE
 
 **Gitting the repository from github**
 See whether you have git on your machine, type the following on your machine:
 
-`git`
-
+```
+cd
+git
+```
 You should see the following lines to the instructions to use git:
 
 ```
@@ -17,14 +19,18 @@ usage: git [--version] [--help] [-C <path>] [-c name=value]
 ```
 If you don't see the above type:
 
-`sudo apt-get install git`
+```sudo apt-get install git```
 
 After installing git on your computer, do:
 
-`git clone https://github.com/alvations/usaarhat-repo.git`
+```git clone https://github.com/alvations/usaarhat-repo.git```
 
 Then do:
 
-`ls`
+```
+ls
+```
 
-You will now see
+You will now see `usaarhat-repo` in the list of files/directories you have.
+
+----

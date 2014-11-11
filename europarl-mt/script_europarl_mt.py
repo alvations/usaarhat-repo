@@ -22,7 +22,7 @@ trg_lang = 'de'
 original_corpus_path = 'corpus.org'
 tokenize_corpus_path = 'corpus.tok'
 
-holdout=6000
+holdout=None
 
 # Download Europarl
 dl_europarl = download_europarl_cmd('en', 'de', 'corpus.org', 
@@ -42,8 +42,11 @@ tc_europarl = truecase_europarl_cmd('en', 'de', 'corpus.tok', shutup=shutup,
                                     holdout=holdout)
 
 # Clean Europarl files
-cl_europarl = clean_europarl_cmd('en', 'de', 'corpus.tok', 1, 80,  
+cl_europarl = clean_europarl_cmd('en', 'de', 'corpus.tok', 1, 80, prefix=None, 
                                  shutup=shutup, truecase=True, holdout=holdout)
+
+#cl_europarl = clean_europarl_cmd('en', 'de', 'corpus.tok', 1, 80, prefix='train-90percent', 
+#                                 shutup=shutup, truecase=True, holdout=holdout)
 
 
 script += dl_europarl + tk_europarl 

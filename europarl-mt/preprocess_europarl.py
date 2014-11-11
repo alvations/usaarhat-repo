@@ -35,7 +35,7 @@ def tokenize_europarl_cmd_single(lang, prefix, infile_path='corpus.org',
     cmd = "{} {} {}".format(cat, perl, outfile)
     if shutup:
         cmd = cmd + ">/dev/null 2>&1"
-    return cmd +" &"
+    return cmd 
 
 def tokenize_europarl_cmd(src_lang, trg_lang, infile_path='corpus.org', 
                           outfile_path='corpus.tok',shutup=False,
@@ -50,7 +50,7 @@ def tokenize_europarl_cmd(src_lang, trg_lang, infile_path='corpus.org',
                                            "${EXPERIMENT}", shutup)
     
     script_lines = ["\n"] +  ["# Tokenizing Europarl "+src_lang+'-'+trg_lang]
-    script_lines += [src_cmd]+ [trg_cmd] + ['wait']
+    script_lines += [src_cmd]+ [trg_cmd]
     return script_lines 
 
 ############################################################################

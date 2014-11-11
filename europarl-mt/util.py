@@ -13,3 +13,5 @@ def create_experiment(experiment_folder_name, moses_script_path):
     script += ['cd '+ experiment_folder_name]
     return script
     
+def find_moses():
+    return os.popen('cd; locate -b "mosesdecoder" | head -n 1').read().strip()

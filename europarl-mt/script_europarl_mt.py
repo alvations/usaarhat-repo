@@ -7,9 +7,9 @@ from preprocess_europarl import tokenize_europarl_cmd, clean_europarl_cmd
 from preprocess_europarl import train_truecase_europarl_cmd, truecase_europarl_cmd
 from preprocess_europarl import get_prefix
 
-from util import create_experiment
+from util import create_experiment, find_moses
 
-moses_script_path = "/home/alvas/mosesdecoder/scripts"
+moses_script_path = find_moses()
 shutup=False
 
 # Creates experiment
@@ -23,6 +23,7 @@ original_corpus_path = 'corpus.org'
 tokenize_corpus_path = 'corpus.tok'
 
 holdout=None
+
 
 # Download Europarl
 dl_europarl = download_europarl_cmd('en', 'de', 'corpus.org', 

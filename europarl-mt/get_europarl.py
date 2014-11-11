@@ -6,7 +6,7 @@ from ast import literal_eval
 langs2links = literal_eval(io.open('europarl-links.txt', 'r').read())
 
 def download_europarl_cmd(src_lang, trg_lang, 
-                          corpus_dir='corpus.org', 
+                          corpus_dir='corpus.org', token_dir='corpus.tok',
                           shutup=False, holdout=3000):
     link = langs2links[src_lang, trg_lang]
     file_prefix = link.rpartition('/')[2].rpartition('.')[0].partition('.')[0]
@@ -34,4 +34,8 @@ def download_europarl_cmd(src_lang, trg_lang,
         trg_tail = "tail -n {h} Europarl.{fp}.{l} > Europarl.{fp}.last{h}.{l}".format(h=holdout, fp=file_prefix, l=trg_lang)
         script_lines+= [src_head] + [trg_head] + [src_tail] + [trg_tail]
     script_lines += [return_to_dir]
+    
+    make_tokenized_directory =  'mkdir {}'.format(token_dir)
+    
+    script_lines += [make_tokenized_directory]
     return script_lines 

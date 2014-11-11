@@ -22,7 +22,7 @@ trg_lang = 'de'
 original_corpus_path = 'corpus.org'
 tokenize_corpus_path = 'corpus.tok'
 
-holdout=3000
+holdout=6000
 
 # Download Europarl
 dl_europarl = download_europarl_cmd('en', 'de', 'corpus.org', 

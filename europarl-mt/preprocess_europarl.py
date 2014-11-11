@@ -2,8 +2,6 @@
 
 import io, os, sys
 from ast import literal_eval
-from threading import Thread
-from Queue import Queue
 
 langs2links = literal_eval(io.open('europarl-links.txt', 'r').read())
 

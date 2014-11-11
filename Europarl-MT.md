@@ -26,7 +26,7 @@ You will see the following output:
 
 
 MOSES_SCRIPT=/home/alvas/mosesdecoder/scripts
-EXPERIMENT=/home/alvas/git/usaarhat-repo/europarl-mt/europarl_pbsmt_en_de
+EXPERIMENT=/home/usaarhat/usaarhat-repo/europarl-mt/europarl_pbsmt_en_de
 
 
 mkdir europarl_pbsmt_en_de
@@ -44,15 +44,13 @@ mkdir corpus.tok
 
 
 # Tokenizing Europarl en-de
-cat ${EXPERIMENT}/corpus.org/Europarl.de-en.en | perl ${MOSES_SCRIPT}/tokenizer/tokenizer.perl -l en  > ${EXPERIMENT}/corpus.tok/Europarl.de-en.tok.en &
-cat ${EXPERIMENT}/corpus.org/Europarl.de-en.de | perl ${MOSES_SCRIPT}/tokenizer/tokenizer.perl -l de  > ${EXPERIMENT}/corpus.tok/Europarl.de-en.tok.de &
-wait
+cat ${EXPERIMENT}/corpus.org/Europarl.de-en.en | perl ${MOSES_SCRIPT}/tokenizer/tokenizer.perl -l en  > ${EXPERIMENT}/corpus.tok/Europarl.de-en.tok.en
+cat ${EXPERIMENT}/corpus.org/Europarl.de-en.de | perl ${MOSES_SCRIPT}/tokenizer/tokenizer.perl -l de  > ${EXPERIMENT}/corpus.tok/Europarl.de-en.tok.de
 
 
 # Training Truecaser Europarl en-de
-perl ${MOSES_SCRIPT}/recaser/train-truecaser.perl --model ${EXPERIMENT}/corpus.tok/truecase-model.en --corpus ${EXPERIMENT}/corpus.tok/Europarl.de-en.tok.en &
-perl ${MOSES_SCRIPT}/recaser/train-truecaser.perl --model ${EXPERIMENT}/corpus.tok/truecase-model.de --corpus ${EXPERIMENT}/corpus.tok/Europarl.de-en.tok.de &
-wait
+perl ${MOSES_SCRIPT}/recaser/train-truecaser.perl --model ${EXPERIMENT}/corpus.tok/truecase-model.en --corpus ${EXPERIMENT}/corpus.tok/Europarl.de-en.tok.en
+perl ${MOSES_SCRIPT}/recaser/train-truecaser.perl --model ${EXPERIMENT}/corpus.tok/truecase-model.de --corpus ${EXPERIMENT}/corpus.tok/Europarl.de-en.tok.de
 
 
 # Copying Europarl en-de for language model
@@ -63,6 +61,7 @@ cp ${EXPERIMENT}/corpus.tok/Europarl.de-en.tok.truecase.de > ${EXPERIMENT}/corpu
 # Cleaning Europarl en-de
 cd ${EXPERIMENT}/corpus.tok
 perl ${MOSES_SCRIPT}/training/clean-corpus-n.perl Europarl.de-en.tok.truecase en de train-clean 1 80
+cd ../..
 
 
 ```
@@ -113,7 +112,8 @@ bash prepare_liling.sh
 ```
 
 You will now see the corresponding steps that are taking place to process the Europarl data.
-Go take make coffee and come back 15-30 mins later.
+Go take make coffee and come back 45 mins to 1 hour later. 
+Note that after tokenization, it seems like nothing is happening but in fact it's building the truecasing model from 1.9 million sentences so it took some time. Keep calm and continue to drink your coffee. 
 
 Now use list directory and you will see that a new directory with the experiment name you've given is created:
 

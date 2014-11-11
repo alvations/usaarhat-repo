@@ -132,4 +132,13 @@ To exit the `cat` command, use `ctr + c` or `q` and then enter
 
 ----
 
+**Congratulations!!!** 
+
+Now you have learned several things while hacking your way till this stage:
+ - how to change / list directory in linux
+ - how to use simple GIT commands
+ - how to prepare corpus for Machine Translation
+ - What is Truecasing?
+ - What is corpus cleaning in Machine Translation?
+
 That's all for Session 1 of USaar Hack and Tell, see you in the next session https://sites.google.com/site/usaarhat/about-us !!!

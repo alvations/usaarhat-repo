@@ -9,42 +9,54 @@ from preprocess_europarl import get_prefix
 
 from util import create_experiment, find_moses
 
+# Automatically finds Moses directory.
 moses_script_path = find_moses()
-shutup=False
 
-# Creates experiment
+# Creates an experiment name.
 expname = "europarl_pbsmt_en_de"
+# Create experiments creates a folder that stores your experiment
 script = create_experiment(expname, moses_script_path)
 
 src_lang = 'en'
 trg_lang = 'de'
 
-original_corpus_path = 'corpus.org'
-tokenize_corpus_path = 'corpus.tok'
-
+# Ignore the holdout and shutup parameters, these are for advance uses.
 holdout=None
+shutup=False
 
+# These directories stores the downloaded and processed corpus.
+original_corpus_path = 'corpus.org'
+tokenized_corpus_path = 'corpus.tok' 
 
 # Download Europarl
-dl_europarl = download_europarl_cmd('en', 'de', 'corpus.org', 
+dl_europarl = download_europarl_cmd(src_lang, trg_lang, 
+                                    original_corpus_path, 
                                     shutup=shutup, holdout=holdout) 
 
 # Tokenize Europarl files
-tk_europarl = tokenize_europarl_cmd('en', 'de', 'corpus.org', 'corpus.tok', 
+tk_europarl = tokenize_europarl_cmd(src_lang, trg_lang, 
+                                    original_corpus_path, 
+                                    tokenized_corpus_path, 
                                     shutup=shutup, holdout=holdout)
 
 
 # Train Truecaser Europarl files
-trtc_europarl = train_truecase_europarl_cmd('en', 'de', 'corpus.tok',
-                                          shutup=shutup, holdout=holdout)
+trtc_europarl = train_truecase_europarl_cmd(src_lang, trg_lang, 
+                                            tokenized_corpus_path,
+                                            shutup=shutup, holdout=holdout)
 
 # Truecase Europarl files
-tc_europarl = truecase_europarl_cmd('en', 'de', 'corpus.tok', shutup=shutup, 
-                                    holdout=holdout)
+tc_europarl = truecase_europarl_cmd(src_lang, trg_lang,
+                                    tokenized_corpus_path, 
+                                    shutup=shutup, holdout=holdout)
 
 # Clean Europarl files
-cl_europarl = clean_europarl_cmd('en', 'de', 'corpus.tok', 1, 80, prefix=None, 
-                                 shutup=shutup, truecase=True, holdout=holdout)
+cl_europarl = clean_europarl_cmd(src_lang, trg_lang,
+                                 tokenized_corpus_path, 1, 80, 
+                                 prefix=None, 
+                                 shutup=shutup, 
+                                 truecase=True, 
+                                 holdout=holdout)
 
 #cl_europarl = clean_europarl_cmd('en', 'de', 'corpus.tok', 1, 80, prefix='train-90percent', 
 #                                 shutup=shutup, truecase=True, holdout=holdout)

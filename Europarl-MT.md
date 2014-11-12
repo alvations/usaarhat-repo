@@ -124,7 +124,7 @@ Go take make coffee and come back 45 mins to 1 hour later.
 
 Note that after tokenization, it seems like nothing is happening but in fact it's building the truecasing model from 1.9 million sentences so it will take some time. Keep calm and continue to drink your coffee. 
 
-Now use list directory and you will see that a new directory with the experiment name you've given is created:
+Once the process stop, you will see how many sentences was cleaned out, then use list directory and you will see that a new directory with the experiment name you've given is created:
 
 ```
 ls

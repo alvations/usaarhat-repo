@@ -1,8 +1,6 @@
 Our second Hack and Tell will go through a major component in machine translation, i.e. language modeling.
 
-You will need to use the Kenneth Language Modelling (KenLM) toolkit for this exercise. If you have installed `mosesdecoder`, it comes packaged with the KenLM. BTW, KenLM is aka. `lmplz`.
-
-First let's take a look at a sample language model that is available from moses:
+First let's take a look at a sample language model that is available from `moses`:
 
 ```
 cd
@@ -52,3 +50,22 @@ Following with the `.arpa` file will list the ngrams one by one and for each lin
  - negative logarithmic probability of ngram
  - backoff probability of the ngram
  
+Now try:
+
+```
+zgrep '\\2-grams' europarl.srilm.gz -A3 -B4
+```
+
+The above `zgrep` command search through the `.arpa` file and prints the line that starts the bigrams (i.e. `\2-grams:`) with 3 lines after it (i.e. `-A3` option) and 4 lines before it (i.e. `-B4` option). You should see:
+
+```
+-4.916062	��alan	-0.2185327
+-5.711829	�resund	-0.1482528
+
+\2-grams:
+-3.642242	! !	-0.2568094
+-2.740354	! "
+-2.733095	! '	-0.2340918
+```
+
+Now you've got used to the `.arpa` file format, go head to the next exercise on `KenLM`

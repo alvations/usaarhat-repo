@@ -59,6 +59,7 @@ zgrep '\\2-grams' europarl.srilm.gz -A3 -B4
 The above `zgrep` command search through the `.arpa` file and prints the line that starts the bigrams (i.e. `\2-grams:`) with 3 lines after it (i.e. `-A3` option) and 4 lines before it (i.e. `-B4` option). You should see:
 
 ```
+-5.426242	�vp	-0.1482528
 -4.916062	��alan	-0.2185327
 -5.711829	�resund	-0.1482528
 

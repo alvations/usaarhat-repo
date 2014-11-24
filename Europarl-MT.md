@@ -153,3 +153,5 @@ Now you have learned several things while hacking your way till this stage:
  - What is corpus cleaning in Machine Translation?
 
 That's all for Session 1 of USaar Hack and Tell, see you in the next session https://sites.google.com/site/usaarhat/about-us !!!
+
+Our second session of USaar Hack and Tell starts with: https://github.com/alvations/usaarhat-repo/blob/master/Know-ARPA.md

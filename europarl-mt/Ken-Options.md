@@ -60,6 +60,71 @@ Please call the lmplz software with `-o 2` option and I want to **feed KenLM wit
 
 Instead of using `< txt.src > txt.arpa`, we could use `~/mosesdecoder/bin/lmplz -o 2 --text txt.src --arpa txt.arpa`
 
+Options that affects your Language Model
+====
+
+The `--prune` option simply throws away ngrams that falls below a certain count, KenLM default is not to prune i.e. `--prune 0`.
+
+```
+  --prune arg                           Prune n-grams with count less than or 
+                                        equal to the given threshold.  Specify 
+                                        one value for each order i.e. 0 0 1 to 
+                                        prune singleton trigrams and above.  
+                                        The sequence of values must be 
+                                        non-decreasing and the last value 
+                                        applies to any remaining orders.  
+                                        Unigram pruning is not implemented, so 
+                                        the first value must be zero.  Default 
+                                        is to not prune, which is equivalent to
+                                        --prune 0.
+```
+
+The `--discount_fallback` option is used if Kneser-Ney smoothing fails.
+                                        
+```
+  --discount_fallback [=arg(=0.5 1 1.5)]
+                                        The closed-form estimate for Kneser-Ney
+                                        discounts does not work without 
+                                        singletons or doubletons.  It can also 
+                                        fail if these values are out of range. 
+                                        This option falls back to 
+                                        user-specified discounts when the 
+                                        closed-form estimate fails.  Note that 
+                                        this option is generally a bad idea: 
+                                        you should deduplicate your corpus 
+                                        instead.  However, class-based models 
+                                        need custom discounts because they lack
+                                        singleton unigrams.  Provide up to 
+                                        three discounts (for adjusted counts 1,
+                                        2, and 3+), which will be applied to 
+                                        all orders where the closed-form 
+                                        estimates fail.
+```
+
+The `--interpolate_unigrams` is used to produce SRILM like outputs
+
+```
+  --interpolate_unigrams [=arg(=1)] (=1)
+                                        Interpolate the unigrams (default) as 
+                                        opposed to giving lots of mass to <unk>
+                                        like SRI.  If you want SRI's behavior 
+                                        with a large <unk> and the old lmplz 
+                                        default, use --interpolate_unigrams 0.
+```
+
+The `--vocab_pad` is used to add <unk> words into the corpus such that your corpus reach a certain mass. 
+
+```
+  --vocab_pad arg (=0)                  If the vocabulary is smaller than this 
+                                        value, pad with <unk> to reach this 
+                                        size. Requires --interpolate_unigrams
+```
+
+
+
+Full option list
+====
+The full option list for KenLM:
 
 ``` 
 Builds unpruned language models with modified Kneser-Ney smoothing.

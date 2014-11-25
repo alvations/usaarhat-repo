@@ -17,6 +17,7 @@ cat txt_prune50.apra | less
 
 
 ~/mosesdecoder/bin/lmplz -o 2 --interpolate_unigrams < txt.src > txt_srilm.arpa
+~/mosesdecoder/bin/lmplz -o 2 --interpolate_unigrams=3 < txt.src > txt_srilm.arpa
 ~/mosesdecoder/bin/lmplz -o 2 --interpolate_unigrams --vocab_pad 10 < txt.src > txt_srilm_pad10.arpa
 ~/mosesdecoder/bin/lmplz -o 2 --interpolate_unigrams --vocab_pad 50 < txt.src > txt_srilm_pad50.arpa
 cat txt_srilm.arpa | less

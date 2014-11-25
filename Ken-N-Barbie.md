@@ -21,7 +21,9 @@ To train an ngram language model, simply do:
 
 Where the `txt.src` is the preprocessed textfile (with tokenization, truecasing, cleaning) and the `txt.arpa` file is the language model file that we require for MT.
 
-Try the following commands the see the difference
+Do take a look at 
+
+Try the following commands the see the difference:
 
 ```
 ~/mosesdecoder/bin/lmplz -o 2 --text txt.src --arpa txt_textarpa.arpa

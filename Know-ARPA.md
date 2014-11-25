@@ -69,4 +69,4 @@ The above `zgrep` command search through the `.arpa` file and prints the line th
 -2.733095	! '	-0.2340918
 ```
 
-Now you've got used to the `.arpa` file format, go head to the next exercise on `KenLM`
+Now you've got used to the `.arpa` file format, go head to the next exercise on `KenLM` https://github.com/alvations/usaarhat-repo/blob/master/Ken-N-Barbie.md

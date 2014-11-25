@@ -23,9 +23,9 @@ cat txt_srilm.arpa | less
 cat txt_srilm_pad10.arpa | less
 cat txt_srilm_pad50.arpa | less
 
-~/mosesdecoder/bin/lmplz -o 2 --discount_fallback=arg(=0.5 1 1.5)  < txt.src > txt_discount1.arpa
-~/mosesdecoder/bin/lmplz -o 2 --discount_fallback=arg(=1 1 1)  < txt.src > txt_discount2.arpa
-~/mosesdecoder/bin/lmplz -o 2 --discount_fallback=arg(=1.5 1 0.5)  < txt.src > txt_discount3.arpa
+~/mosesdecoder/bin/lmplz -o 2 --discount_fallback=0.5 1 1.5  < txt.src > txt_discount1.arpa
+~/mosesdecoder/bin/lmplz -o 2 --discount_fallback=1 1 1  < txt.src > txt_discount2.arpa
+~/mosesdecoder/bin/lmplz -o 2 --discount_fallback=1.5 1 0.5  < txt.src > txt_discount3.arpa
 cat txt_discount1.arpa | less
 cat txt_discount2.arpa | less
 cat txt_discount3.arpa | less

@@ -17,4 +17,4 @@ Sessions
  - **Session 2**
  	2. [Know ARPA](https://github.com/alvations/usaarhat-repo/blob/master/Know-ARPA.md)
  	2. [Ken N Barbie](https://github.com/alvations/usaarhat-repo/blob/master/Ken-N-Barbie.md)
- 	2. [More LM]()
+ 	2. [Ken Options](https://github.com/alvations/usaarhat-repo/blob/master/Ken-Options.md)

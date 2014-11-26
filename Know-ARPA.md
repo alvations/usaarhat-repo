@@ -1,6 +1,12 @@
 Our second Hack and Tell will go through a major component in machine translation, i.e. language modeling.
 
-First let's take a look at a sample language model that is available from `moses`:
+First login to the EXPERT server:
+
+```
+ssh liling@coli.uni-saarland.de ssh -p23456 usaarhat@localhost
+```
+
+Now let's take a look at a sample language model that is available from `moses`:
 
 ```
 cd

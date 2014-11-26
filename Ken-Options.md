@@ -1,15 +1,58 @@
 Build some LMs
 ====
 
+For the following exercises, the `txt.src` is the first 1000 line of the Europarl corpus, preprocessed with the methods we've learnt from https://github.com/alvations/usaarhat-repo/blob/master/MeeT-Moses.md 
+
 Try the following commands the see the difference, for each `.arpa` file you've built, try to spot the difference:
 
 ```
-~/mosesdecoder/bin/lmplz -o 2 --text txt.src --arpa txt_textarpa.arpa
-cat txt_textarpa.arpa | less
-
-~/mosesdecoder/bin/lmplz -o 3  < txt.src > txt.arpa
+~/mosesdecoder/bin/lmplz -o 2  < txt.src > txt.arpa
 cat txt.apra | less
 
+~/mosesdecoder/bin/lmplz -o 2 --text txt.src --arpa txt_textarpa.arpa
+cat txt_textarpa.arpa | less
+```
+
+You notice that there is no difference in the output files `txt.arpa` and `txt_textarpa` because they are the same commands just that 
+ - one uses the standard file input/output operation on the linux terminals (i.e. `<` and `>`) and 
+ - the other uses the `--text` and `--arpa` parameters defined by KenLM  
+
+For more information, scroll down and see the **File Related Options** below. 
+
+----
+
+Let's try
+
+```
+~/mosesdecoder/bin/lmplz -o 3  < txt.src > txt.arpa
+cat txt_trigrams.apra | less
+
+~/mosesdecoder/bin/lmplz -o 4  < txt.src > txt.arpa
+cat txt_fourgrams.apra | less
+
+```
+What is the difference?
+
+Now try:
+
+```
+~/mosesdecoder/bin/lmplz -o 10  < txt.src > txt.arpa
+cat txt_tengrams.apra | less
+```
+ 
+You should see an error:
+
+```
+/home/usaarhat/mosesdecoder/lm/builder/adjust_counts.cc:58 in void lm::builder::{anonymous}::StatCollector::CalculateDiscounts(const lm::builder::DiscountConfig&) threw BadDiscountException because `discounts_[i].amount[j] < 0.0 || discounts_[i].amount[j] > j'.
+ERROR: 5-gram discount out of range for adjusted count 3: -0.963829
+Aborted (core dumped)
+```
+
+The error means, *'for the corpus size you have, the discounting for 5grams are too low to be taken into account, so building the language model with 10grams is not posssible in KenLM'*
+
+----
+
+```
 ~/mosesdecoder/bin/lmplz -o 2 --prune 10 < txt.src > txt_prune10.arpa
 ~/mosesdecoder/bin/lmplz -o 2 --prune 50 < txt.src > txt_prune50.arpa
 cat txt_prune10.apra | less

@@ -56,16 +56,16 @@ Aborted (core dumped)
 The error means, *'for the corpus size you have, the discounting for 5grams are too low to be taken into account, so building the language model with 10grams is not posssible in KenLM'*
 
 
-Pruning (Not working, pls raise issue to Ken)
+Pruning
 ----
 
 Pruning means to remove ngrams that has less than a certain number of counts.
 
 ```
-~/mosesdecoder/bin/lmplz -o 2 --prune 10 < txt.src > txt_prune10.arpa
-~/mosesdecoder/bin/lmplz -o 2 --prune 50 < txt.src > txt_prune50.arpa
-cat txt_prune10.apra | less
-cat txt_prune50.apra | less
+~/mosesdecoder/bin/lmplz -o 3 --prune 0 10 < txt.src > txt_prune10.arpa
+~/mosesdecoder/bin/lmplz -o 3 --prune 0 50 < txt.src > txt_prune50.arpa
+~/mosesdecoder/bin/lmplz -o 3 --prune 0 10 50 < txt.src > txt_prune1050.arpa
+grep '\\2-grams' -A10 -B3 txt_prune1050.arpa
 ```
 
 See a difference?

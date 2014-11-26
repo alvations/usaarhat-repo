@@ -56,7 +56,7 @@ Aborted (core dumped)
 The error means, *'for the corpus size you have, the discounting for 5grams are too low to be taken into account, so building the language model with 10grams is not posssible in KenLM'*
 
 
-Pruning
+Pruning (Not working, pls raise issue to Ken)
 ----
 
 Pruning means to remove ngrams that has less than a certain number of counts.
@@ -140,7 +140,7 @@ cat txt_collapse.arpa
 cat txt_nocollapse.arpa
 ```
 
-**What happen to our fallback values on the 3rd columns** 
+**What happen to our fallback values on the 3rd column?** 
 
 
 

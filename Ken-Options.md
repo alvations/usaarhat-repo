@@ -3,6 +3,9 @@ Build some LMs
 
 For the following exercises, the `txt.src` is the first 1000 line of the Europarl corpus, preprocessed with the methods we've learnt from https://github.com/alvations/usaarhat-repo/blob/master/MeeT-Moses.md 
 
+`--text`, `--arpa` vs `<`, `>`
+====
+
 Try the following commands the see the difference, for each `.arpa` file you've built, try to spot the difference:
 
 ```
@@ -20,6 +23,8 @@ You notice that there is no difference in the output files `txt.arpa` and `txt_t
 For more information, scroll down and see the **File Related Options** below. 
 
 ----
+Unigrams, Bigrams, Trigrams, ... Manygrams
+====
 
 Let's try
 

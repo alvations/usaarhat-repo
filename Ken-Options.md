@@ -61,14 +61,26 @@ Pruning
 
 Pruning means to remove ngrams that has less than a certain number of counts.
 
+In KenLM, you use the `--prune` option and subsequently the list of minimum number of counts for the different order of ngrams.
+
 ```
 ~/mosesdecoder/bin/lmplz -o 3 --prune 0 10 < txt.src > txt_prune10.arpa
 ~/mosesdecoder/bin/lmplz -o 3 --prune 0 50 < txt.src > txt_prune50.arpa
 ~/mosesdecoder/bin/lmplz -o 3 --prune 0 10 50 < txt.src > txt_prune1050.arpa
+
+grep '\\2-grams' -A10 -B3 txt_prune10.arpa
+grep '\\3-grams' -A10 -B3 txt_prune10.arpa
+
+grep '\\2-grams' -A10 -B3 txt_prune50.arpa
+grep '\\3-grams' -A10 -B3 txt_prune50.arpa
+
 grep '\\2-grams' -A10 -B3 txt_prune1050.arpa
+grep '\\3-grams' -A10 -B3 txt_prune1050.arpa
 ```
 
 See a difference?
+
+(Note: the pruning threshold for unigrams must be set to 0)
 
 
 Discount not Sale

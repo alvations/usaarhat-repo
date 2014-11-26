@@ -17,6 +17,7 @@ To train an ngram language model, simply do:
 
 ```
 ~/mosesdecoder/bin/lmplz -o 2 < txt.src > txt.arpa
+cat txt.arpa | less
 ```
 
 Where the `txt.src` is the preprocessed textfile (with tokenization, truecasing, cleaning) and the `txt.arpa` file is the language model file that we require for MT.

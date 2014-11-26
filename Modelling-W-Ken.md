@@ -1,7 +1,7 @@
 Build some LMs
 ====
 
-For the following exercises, the `txt.src` is the first 1000 line of the Europarl corpus, preprocessed with the methods we've learnt from https://github.com/alvations/usaarhat-repo/blob/master/MeeT-Moses.md 
+For the following exercises, the `txt.src` is the first 1000 lines of the Europarl corpus, preprocessed with the methods we've learnt from https://github.com/alvations/usaarhat-repo/blob/master/MeeT-Moses.md 
 
 Operators vs Parameters
 ----

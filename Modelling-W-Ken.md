@@ -165,7 +165,7 @@ cat txt_srilm_pad50.arpa | less
 
 ----
 
-Congratulations !!!!
+**Congratulations !!!!**
  
  - You can now build tonnes of language models and use them for many NLP tasks
  - Also you will be one of the few who really knows the ins and outs of KenLM and its quirk.

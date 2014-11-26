@@ -71,19 +71,6 @@ cat txt_prune50.apra | less
 See a difference?
 
 
-Emulating SRILM
-----
-
-```
-~/mosesdecoder/bin/lmplz -o 2 --interpolate_unigrams < txt.src > txt_srilm.arpa
-~/mosesdecoder/bin/lmplz -o 2 --interpolate_unigrams=3 < txt.src > txt_srilm.arpa
-~/mosesdecoder/bin/lmplz -o 2 --interpolate_unigrams --vocab_pad 10 < txt.src > txt_srilm_pad10.arpa
-~/mosesdecoder/bin/lmplz -o 2 --interpolate_unigrams --vocab_pad 50 < txt.src > txt_srilm_pad50.arpa
-cat txt_srilm.arpa | less
-cat txt_srilm_pad10.arpa | less
-cat txt_srilm_pad50.arpa | less
-```
-
 Discount not Sale
 ---
 
@@ -137,11 +124,32 @@ Collapsing?
 ~/mosesdecoder/bin/lmplz -o 2 < txt.src > txt_nocollapse.arpa
 ~/mosesdecoder/bin/lmplz -o 2 --collapse_values < txt.src > txt_collapse.arpa
 cat txt_collapse.arpa
-cat txt_nocollapse.arpa
 ```
+
+Note the line `-1.9595848      der     0`.
 
 **What happen to our fallback values on the 3rd column?** 
 
+Now look at `txt_nocollapse.arpa` and then look at the line `-1.6257969      der     -0.33378786`. Then perform some mental calculation: `-1.6257969 + -0.33378786`.
+
+For more info, see http://kheafield.com/professional/edinburgh/rest_paper.pdf
+
+
+Emulating SRILM
+----
+
+These parameters emulates SRILM outputs, for what it's worth, if you're using KenLM to get SRILM outputs, then ...
+
+Regardless, see **Full option list** for more information on these parameters.
+
+```
+~/mosesdecoder/bin/lmplz -o 2 --interpolate_unigrams < txt.src > txt_srilm.arpa
+~/mosesdecoder/bin/lmplz -o 2 --interpolate_unigrams --vocab_pad 10 < txt.src > txt_srilm_pad10.arpa
+~/mosesdecoder/bin/lmplz -o 2 --interpolate_unigrams --vocab_pad 50 < txt.src > txt_srilm_pad50.arpa
+cat txt_srilm.arpa | less
+cat txt_srilm_pad10.arpa | less
+cat txt_srilm_pad50.arpa | less
+```
 
 
 ----

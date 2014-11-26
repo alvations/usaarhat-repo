@@ -3,7 +3,7 @@ Build some LMs
 
 For the following exercises, the `txt.src` is the first 1000 line of the Europarl corpus, preprocessed with the methods we've learnt from https://github.com/alvations/usaarhat-repo/blob/master/MeeT-Moses.md 
 
-`--text`, `--arpa` vs `<`, `>`
+Operators vs Parameters
 ====
 
 Try the following commands the see the difference, for each `.arpa` file you've built, try to spot the difference:

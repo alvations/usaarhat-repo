@@ -162,3 +162,14 @@ cat txt_srilm.arpa | less
 cat txt_srilm_pad10.arpa | less
 cat txt_srilm_pad50.arpa | less
 ```
+
+----
+
+Congratulations !!!!
+ 
+ - You can now build tonnes of language models and use them for many NLP tasks
+ - Also you will be one of the few who really knows the ins and outs of KenLM and its quirk.
+
+So that's all for this week's hack, for more information on KenLM options, see https://github.com/alvations/usaarhat-repo/blob/master/Ken-Options.md
+
+See you guys on 09 December for next hack and tell !!!! 

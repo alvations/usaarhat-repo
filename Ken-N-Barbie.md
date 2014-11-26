@@ -22,4 +22,4 @@ cat txt.arpa | less
 
 Where the `txt.src` is the preprocessed textfile (with tokenization, truecasing, cleaning) and the `txt.arpa` file is the language model file that we require for MT.
 
-Proceed to https://github.com/alvations/usaarhat-repo/blob/master/Ken-Options.md
+Proceed to https://github.com/alvations/usaarhat-repo/blob/master/Modelling-W-Ken.md

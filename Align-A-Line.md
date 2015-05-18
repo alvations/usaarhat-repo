@@ -47,6 +47,7 @@ http://www.statmt.org/moses/RELEASE-3.0/binaries/macosx-yosemite/training-tools/
 mv www.statmt.org/moses/RELEASE-3.0/binaries/macosx-yosemite/training-tools/ .
 rm training-tools/index*
 rm -rf www.statmt.org/
+chmod -R training-tools/*
 ```
 
 Although it's nice to go through the `GIZA++` tutorial and understand the steps of how to call the different components but the simplest way to get a word alignment trained is to use `train-model.perl` from Moses. 

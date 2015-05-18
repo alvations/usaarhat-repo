@@ -1,3 +1,6 @@
+Aling Align 
+====
+
 Welcome back to USAAR Hack and Tell session. This session we'll learn how to achieve word alignments with various tools. Let's start afresh by cloning the `usaarhat-repo`:
 
 ```
@@ -46,5 +49,27 @@ rm training-tools/index*
 rm -rf www.statmt.org/
 ```
 
-Although it's nice to go through the `GIZA++` tutorial and understand the steps of how to call the different components but the simplest way to get a word alignment trained is to use `train-model.perl` from Moses.
+Although it's nice to go through the `GIZA++` tutorial and understand the steps of how to call the different components but the simplest way to get a word alignment trained is to use `train-model.perl` from Moses. 
 
+To get the `train-model.perl`:
+
+
+```
+wget http://www.statmt.org/moses/RELEASE-3.0/binaries/linux-64bit/scripts/training/train-model.perl
+wget http://www.statmt.org/moses/RELEASE-3.0/binaries/linux-64bit/scripts/training/LexicalTranslationModel.pm
+```
+
+To align the words:
+
+```
+perl train-model.perl \
+--root-dir .  \
+--model-dir model \
+--corpus Europarl.de-en \
+--f en --e de  \
+--external-bin-dir ./training-tools \
+--mgiza -mgiza-cpus 4 \
+--parallel \
+--first-step 1 --last-step 3 \
+>& giza.log
+```

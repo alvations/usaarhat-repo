@@ -140,3 +140,31 @@ The parameters are:
  - **--first-step 1 --last-step 3**: specifies the steps to take during the `train-model.perl` process
   
  
+Now, let's see the output:
+
+```
+cd work.en-de/model
+less aligned.grow-diag-final
+```
+
+You will see something like these:
+
+```
+0-0 1-0 2-1 3-2
+0-0 1-1 2-1 3-2 2-3 10-3 2-4 2-6 30-6 2-7 13-7 14-7 2-8 9-8 4-9 26-9 5-10 27-10 6-11 28-11 7-12 37-12 8-13 38-13 15-14 38-14 38-15 35-16 11-17 17-17 11-18 11-19 18-19 20-19 11-20 19-20 12-21 21-21 12-22 22-22 12-23 23-23 16-24 31-25 25-26 32-27 24-28 33-28 34-29 35-29 36-29 36-30 37-30 29-31 36-31 38-31 39-32
+```
+
+Each line represents the alignment points between the `Europarl.de-en.100sents.en` and `Europarl.de-en.100sents.de` lines. For example, for the first sentence:
+
+ - **EN:** resumption of the session
+ - **DE:** Wiederaufnahme der Sitzungsperiode
+ - **GDFA:** 0-0 1-0 2-1 3-2
+
+
+ - The 0th word from the source language (EN), i.e. *resumption*, aligns with the 0th word from the target language (DE), i.e. *Wiederaufnahme*. 
+ - The 1st word from EN, i.e. *of*, aligns with the 0th word from DE, i.e. *Wiederaufnahme*.
+ - The 2nd word from EN, i.e. *the*, aligns with the 1st word from DE, , i.e. *der*
+ - The 3rd word from EN aligns, i.e. *session*, with the 2nd word from DE, i.e. *Sitzungsperiode*
+
+
+This is what typically known as the GDFA alignments (I'm sure there are other explanation to the algorithm to generate GDFA but the `NLTK` implementation is straight-forward).

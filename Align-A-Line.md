@@ -8,9 +8,16 @@ cd
 git clone https://github.com/alvations/usaarhat-repo.git
 cd usaarhat-repo
 bash momo.sh
+mv mosesdecoder ../
 ```
 
 (If the above sounds Greek/Chinese to you, go to [Getting Started]( https://github.com/alvations/usaarhat-repo/blob/master/Getting-Started.md))
+
+For Mac users:
+
+```
+wget -r --no-parent http://www.statmt.org/moses/RELEASE-3.0/binaries/macosx-yosemite/
+```
 
 ----
 Parallel data

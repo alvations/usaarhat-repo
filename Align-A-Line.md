@@ -70,7 +70,7 @@ perl train-model.perl \
 --model-dir model \
 --corpus Europarl.de-en.10sents \
 --f en --e de  \
---external-bin-dir ./training-tools \
+--external-bin-dir "training-tools" \
 --mgiza -mgiza-cpus 4 \
 --parallel \
 --first-step 1 --last-step 3 \

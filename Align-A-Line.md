@@ -45,6 +45,7 @@ wget -r --no-parent http://www.statmt.org/moses/RELEASE-3.0/binaries/linux-64bit
 mv www.statmt.org/moses/RELEASE-3.0/binaries/linux-64bit/training-tools/ .
 rm training-tools/index*
 rm -rf www.statmt.org/
+chmod a+x training-tools/*
 ```
 
 For Mac:
@@ -56,7 +57,7 @@ http://www.statmt.org/moses/RELEASE-3.0/binaries/macosx-yosemite/training-tools/
 mv www.statmt.org/moses/RELEASE-3.0/binaries/macosx-yosemite/training-tools/ .
 rm training-tools/index*
 rm -rf www.statmt.org/
-chmod -R training-tools/*
+chmod a+x training-tools/*
 ```
 
 Train-model.perl

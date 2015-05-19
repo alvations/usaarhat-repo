@@ -112,7 +112,7 @@ Steps: (--first-step to --last-step)
 Atlas, Word Alignments
 ====
 
-To get word alignments, the simplest way to get it with `GIZA++` is using the following command:
+To get word alignments, the simplest way to get it with `MGIZA++` is using the following command:
 
 ```
 cd ~/usaarhat-repo
@@ -177,4 +177,4 @@ Wiederaufnahme der Sitzungsperiode
 
 This is what typically known as the GDFA alignments (I'm sure there are other explanation to the algorithm to generate GDFA but the `NLTK` implementation is straight-forward, see https://github.com/nltk/nltk/blob/develop/nltk/align/gdfa.py).
 
-Congratulations, you have successfully becomed a MGIZA++ addict!!!
+Congratulations, you have successfully becomed a (M)GIZA++ addict!!!

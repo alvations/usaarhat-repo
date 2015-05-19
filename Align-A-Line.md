@@ -69,7 +69,7 @@ cd ~/usaarhat-repo
 perl ~/mosesdecoder/scripts/training/train-model.perl
 ```
 
-You will see the following horrendous error message that makes absolutely no sense to users but it's easily identifiable if you have gone through the [Moses rite of passage](http://www.statmt.org/moses/?n=FactoredTraining.HomePage) (It's absolutely not necessary, unless you want to know about the intricate details of` moses`, which personally, it's pretty fun stuff)
+Upon calling the `train-model.perl`, you will see the following horrendous error message that makes absolutely no sense to users but it's easily identifiable if you have gone through the [Moses rite of passage](http://www.statmt.org/moses/?n=FactoredTraining.HomePage) (It's absolutely not necessary, unless you want to know about the intricate details of` moses`, which personally, it's pretty fun stuff)
 
 ```
 Using SCRIPTS_ROOTDIR: /home/alvas/mosesdecoder/scripts

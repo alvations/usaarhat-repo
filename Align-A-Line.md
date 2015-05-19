@@ -1,12 +1,17 @@
 Aling Align 
 ====
 
-Welcome back to USAAR Hack and Tell session. This session we'll learn how to achieve word alignments with various tools. Let's start afresh by cloning the `usaarhat-repo`:
+Welcome back to USAAR Hack and Tell session. This session we'll learn how to achieve word alignments with various tools. Let's start afresh by cloning the `usaarhat-repo` and re-install moses with `momo.sh`:
 
 ```
 cd
 git clone https://github.com/alvations/usaarhat-repo.git
+cd usaarhat-repo
+bash momo.sh
 ```
+
+(If the above sounds Greek/Chinese to you, go to [Getting Started]( https://github.com/alvations/usaarhat-repo/blob/master/Getting-Started.md))
+
 ----
 Parallel data
 ====
@@ -54,13 +59,27 @@ chmod -R training-tools/*
 
 Although it's nice to go through the `GIZA++` tutorial and understand the steps of how to call the different components but the simplest way to get a word alignment trained is to use `train-model.perl` from Moses. 
 
-To get the `train-model.perl`:
+```
+cd ~/usaarhat-repo
+perl ~/mosesdecoder/scripts/training/train-model.perl
+```
 
+You will see the following horrendous error that makes absolutely no sense to users but it's easily identifiable if you have gone through the [Moses rite of passage](http://www.statmt.org/moses/?n=FactoredTraining.HomePage) (but it's absolutely not necessary, unless you want to know about the intricate details of` moses`, which is pretty fun stuff if you like this sort of things)
 
 ```
-wget http://www.statmt.org/moses/RELEASE-3.0/binaries/linux-64bit/scripts/training/train-model.perl
-wget http://www.statmt.org/moses/RELEASE-3.0/binaries/linux-64bit/scripts/training/LexicalTranslationModel.pm
+Using SCRIPTS_ROOTDIR: /home/alvas/mosesdecoder/scripts
+Use of uninitialized value $_EXTERNAL_BINDIR in concatenation (.) or string at /home/alvas/mosesdecoder/scripts/training/train-model.perl line 357.
+Use of uninitialized value $_EXTERNAL_BINDIR in concatenation (.) or string at /home/alvas/mosesdecoder/scripts/training/train-model.perl line 358.
+Use of uninitialized value $_EXTERNAL_BINDIR in concatenation (.) or string at /home/alvas/mosesdecoder/scripts/training/train-model.perl line 365.
+Use of uninitialized value $_EXTERNAL_BINDIR in concatenation (.) or string at /home/alvas/mosesdecoder/scripts/training/train-model.perl line 366.
+Use of uninitialized value $_EXTERNAL_BINDIR in concatenation (.) or string at /home/alvas/mosesdecoder/scripts/training/train-model.perl line 368.
+Using single-thread GIZA
+using gzip 
+Use of uninitialized value $_EXTERNAL_BINDIR in concatenation (.) or string at /home/alvas/mosesdecoder/scripts/training/train-model.perl line 479.
+ERROR: Cannot find mkcls, GIZA++/mgiza, & snt2cooc.out/snt2cooc in .
+You MUST specify the parameter -external-bin-dir at /home/alvas/mosesdecoder/scripts/training/train-model.perl line 479.
 ```
+
 
 To align the words:
 

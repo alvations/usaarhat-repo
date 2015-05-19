@@ -18,3 +18,7 @@ Sessions
  	2. [Know ARPA](https://github.com/alvations/usaarhat-repo/blob/master/Know-ARPA.md)
  	2. [Ken N Barbie](https://github.com/alvations/usaarhat-repo/blob/master/Ken-N-Barbie.md)
  	2. [Modeling with Ken](https://github.com/alvations/usaarhat-repo/blob/master/Modelling-W-Ken.md)
+ 	3. 
+ 	
+- **Session 3**: Becoming a (M)GIZA++ Addict
+ 	3. [Aling Align](https://github.com/alvations/usaarhat-repo/blob/master/Align-A-Line.md)

@@ -27,6 +27,8 @@ head -n10 Europarl.de-en.en > Europarl.de-en.10sents.en
 head -n10 Europarl.de-en.de > Europarl.de-en.10sents.de
 ```
 
+**NOTE:** The file names for the parallel files must be the same and the post-fixed should be the language code you use to represent the language (it's because moses only accepts parallel corpus files with certain naming conventions).
+
 ----
 
 GIZA++ Addiction
@@ -57,6 +59,9 @@ rm -rf www.statmt.org/
 chmod -R training-tools/*
 ```
 
+Train-model.perl
+====
+
 Although it's nice to go through the `GIZA++` tutorial and understand the steps of how to call the different components but the simplest way to get a word alignment trained is to use `train-model.perl` from Moses. 
 
 ```
@@ -80,13 +85,41 @@ ERROR: Cannot find mkcls, GIZA++/mgiza, & snt2cooc.out/snt2cooc in .
 You MUST specify the parameter -external-bin-dir at /home/alvas/mosesdecoder/scripts/training/train-model.perl line 479.
 ```
 
-
-To align the words:
+There are 9 steps in Moses to build an MT model but for word alignment, what you really need is step 1 to step 3. To view the steps:
 
 ```
+~/mosesdecoder/scripts/training/train-model.perl --steps
+```
+
+There steps are:
+
+```
+Unknown option: steps
+Train Phrase Model
+
+Steps: (--first-step to --last-step)
+(1) prepare corpus
+(2) run GIZA
+(3) align words
+(4) learn lexical translation
+(5) extract phrases
+(6) score phrases
+(7) learn reordering model
+(8) learn generation model
+(9) create decoder config file
+```
+
+Atlas, Word Alignments
+====
+
+To get word alignments, the simplest way to get it with `GIZA++` is using the following command:
+
+```
+cd ~/usaarhat-repo
+
 perl train-model.perl \
---root-dir .  \
---model-dir model \
+--root-dir work.en-de  \
+--model-dir work.en-de/model \
 --corpus Europarl.de-en.10sents \
 --f en --e de  \
 --external-bin-dir "training-tools" \
@@ -95,3 +128,16 @@ perl train-model.perl \
 --first-step 1 --last-step 3 \
 >& giza.log
 ```
+
+The parameters are:
+ - **--root-dir** : specifies the working directory that you save your output files
+ - **--model-dir**: specifies the directory that saves your aligned model files
+ - **--corpus**: specifies the prefix name for the corpus
+ - **--f**: specifies the source language 
+ - **--e**: specifies the target language 
+ - **--external-bin-dir**: specifies the directory where you save the `training-tools`
+ - **--mgiza -mgiza-cpus 4**: specifies the usage of `MGIZA++` and the use of 4 CPUs 
+ - **--parallel**: it's sort of a hack to use parallel processors for some steps (see [Moses Factored Training](http://www.statmt.org/moses/?n=FactoredTraining.HomePage)) 
+ - **--first-step 1 --last-step 3**: specifies the steps to take during the `train-model.perl` process
+  
+ 

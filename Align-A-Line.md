@@ -177,4 +177,4 @@ Wiederaufnahme der Sitzungsperiode
 
 This is what typically known as the GDFA alignments (I'm sure there are other explanation to the algorithm to generate GDFA but the `NLTK` implementation is straight-forward, see https://github.com/nltk/nltk/blob/develop/nltk/align/gdfa.py).
 
-Congratulations, you have successfully becomed a GIZA++ addict!!!
+Congratulations, you have successfully becomed a MGIZA++ addict!!!

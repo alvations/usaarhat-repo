@@ -60,7 +60,7 @@ For Mac:
 ```
 cd
 cd usaarhat-repo
-http://www.statmt.org/moses/RELEASE-3.0/binaries/macosx-yosemite/training-tools/
+wget -r --no-parent http://www.statmt.org/moses/RELEASE-3.0/binaries/macosx-yosemite/training-tools/
 mv www.statmt.org/moses/RELEASE-3.0/binaries/macosx-yosemite/training-tools/ .
 rm training-tools/index*
 rm -rf www.statmt.org/

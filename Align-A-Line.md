@@ -62,14 +62,14 @@ chmod -R training-tools/*
 Train-model.perl
 ====
 
-Although it's nice to go through the `GIZA++` tutorial and understand the steps of how to call the different components but the simplest way to get a word alignment trained is to use `train-model.perl` from Moses. 
+Although it's nice to go through the `GIZA++` tutorial and understand the steps of how to call the different components, the simplest way to get a word alignment trained is to use `train-model.perl` from Moses. 
 
 ```
 cd ~/usaarhat-repo
 perl ~/mosesdecoder/scripts/training/train-model.perl
 ```
 
-You will see the following horrendous error that makes absolutely no sense to users but it's easily identifiable if you have gone through the [Moses rite of passage](http://www.statmt.org/moses/?n=FactoredTraining.HomePage) (but it's absolutely not necessary, unless you want to know about the intricate details of` moses`, which is pretty fun stuff if you like this sort of things)
+You will see the following horrendous error message that makes absolutely no sense to users but it's easily identifiable if you have gone through the [Moses rite of passage](http://www.statmt.org/moses/?n=FactoredTraining.HomePage) (It's absolutely not necessary, unless you want to know about the intricate details of` moses`, which personally, it's pretty fun stuff)
 
 ```
 Using SCRIPTS_ROOTDIR: /home/alvas/mosesdecoder/scripts

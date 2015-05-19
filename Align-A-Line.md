@@ -23,8 +23,8 @@ wget http://opus.lingfil.uu.se/Europarl/wordalign/de-en/de -O Europarl.de-en.de
 wget http://opus.lingfil.uu.se/Europarl/wordalign/de-en/en -O Europarl.de-en.en
 head Eurparl.de-en.de
 head Eurparl.de-en.en
-head -n10 Europarl.de-en.en > Europarl.de-en.10sents.en
-head -n10 Europarl.de-en.de > Europarl.de-en.10sents.de
+head -n10 Europarl.de-en.en > Europarl.de-en.1000sents.en
+head -n10 Europarl.de-en.de > Europarl.de-en.1000sents.de
 ```
 
 **NOTE:** The file names for the parallel files must be the same and the post-fixed should be the language code you use to represent the language (it's because moses only accepts parallel corpus files with certain naming conventions).
@@ -117,7 +117,7 @@ To get word alignments, the simplest way to get it with `GIZA++` is using the fo
 ```
 cd ~/usaarhat-repo
 
-perl train-model.perl \
+perl ~/mosesdecoder/scripts/training/train-model.perl \
 --root-dir work.en-de  \
 --model-dir work.en-de/model \
 --corpus Europarl.de-en.10sents \
@@ -125,8 +125,7 @@ perl train-model.perl \
 --external-bin-dir "training-tools" \
 --mgiza -mgiza-cpus 4 \
 --parallel \
---first-step 1 --last-step 3 \
->& giza.log
+--first-step 1 --last-step 3
 ```
 
 The parameters are:

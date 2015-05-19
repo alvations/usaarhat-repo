@@ -18,6 +18,8 @@ wget http://opus.lingfil.uu.se/Europarl/wordalign/de-en/de -O Europarl.de-en.de
 wget http://opus.lingfil.uu.se/Europarl/wordalign/de-en/en -O Europarl.de-en.en
 head Eurparl.de-en.de
 head Eurparl.de-en.en
+head -n10 Europarl.de-en.en > Europarl.de-en.10sents.en
+head -n10 Europarl.de-en.de > Europarl.de-en.10sents.de
 ```
 
 ----
@@ -66,7 +68,7 @@ To align the words:
 perl train-model.perl \
 --root-dir .  \
 --model-dir model \
---corpus Europarl.de-en \
+--corpus Europarl.de-en.10sents \
 --f en --e de  \
 --external-bin-dir ./training-tools \
 --mgiza -mgiza-cpus 4 \

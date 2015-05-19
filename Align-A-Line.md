@@ -23,6 +23,8 @@ wget http://opus.lingfil.uu.se/Europarl/wordalign/de-en/de -O Europarl.de-en.de
 wget http://opus.lingfil.uu.se/Europarl/wordalign/de-en/en -O Europarl.de-en.en
 head Eurparl.de-en.de
 head Eurparl.de-en.en
+head -n100 Eurparl.de-en.de > Eurparl.de-en.100sents.de
+head -n100 Eurparl.de-en.en > Eurparl.de-en.100sents.en
 ```
 
 **NOTE:** The file names for the parallel files must be the same and the post-fixed should be the language code you use to represent the language (it's because moses only accepts parallel corpus files with certain naming conventions).
@@ -118,7 +120,7 @@ cd ~/usaarhat-repo
 perl ~/mosesdecoder/scripts/training/train-model.perl \
 --root-dir work.en-de  \
 --model-dir work.en-de/model \
---corpus Europarl.de-en \
+--corpus Europarl.de-en.100sents \
 --f en --e de  \
 --external-bin-dir "training-tools" \
 --mgiza -mgiza-cpus 4 \
